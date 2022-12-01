@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class CountryServiceImpl implements CountryService{
-
     private CountryRepository countryRepository;
 
     @Override
