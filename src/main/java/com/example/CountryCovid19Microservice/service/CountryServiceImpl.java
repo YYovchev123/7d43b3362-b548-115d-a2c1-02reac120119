@@ -15,6 +15,9 @@ public class CountryServiceImpl implements CountryService{
 
     @Override
     public Country findByCountryCode(String countryCode) {
+        if (countryCode.length() > 2 || !countryCode.toUpperCase().equals(countryCode) || countryCode.contains(" ")) {
+            throw new RecordNotFoundException("The country code should only be two capital letters!");
+        }
         return countryRepository.findByCountryCode(countryCode)
                 .orElseThrow(() -> new RecordNotFoundException(String.format("Country with country code: %s is not found!", countryCode)));
     }
